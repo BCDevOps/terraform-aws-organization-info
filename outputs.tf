@@ -1,3 +1,15 @@
+output "root" {
+	value = data.aws_organizations_organization.org_root
+}
+
+output "master_account" {
+	value = {
+		"id" = data.aws_organizations_organization.org_root.master_account_id
+		"email" = data.aws_organizations_organization.org_root.master_account_email
+	}
+}
+
+
 // the OU that is the immedaite child of the org root that contains project-level workload OU's
 output "workload_ou" {
 	value = local.workload_ou
